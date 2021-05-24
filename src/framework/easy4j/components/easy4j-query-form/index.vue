@@ -25,7 +25,11 @@
                   @changeCity="changeCity($event, item.prop)"
                   :placeholder="item.placeholder"
                 ></easy4j-city-cascader>
-                <easy4j-time-picker v-if="item.type === 'timePicker'" v-model="queryParam[item.prop]" :type="item.pickerType || 'date'"></easy4j-time-picker>
+                <easy4j-time-picker
+                  v-if="item.type === 'timePicker'"
+                  v-model="queryParam[item.prop]"
+                  :type="item.pickerType || 'date'"
+                ></easy4j-time-picker>
                 <a-input v-if="!item.type" v-model="queryParam[item.prop]" :placeholder="item.placeholder" />
               </a-form-item>
             </a-col>
@@ -50,7 +54,11 @@
                   @changeCity="changeCity($event, item.prop)"
                   :placeholder="item.placeholder"
                 ></easy4j-city-cascader>
-                <easy4j-time-picker v-model="queryParam[item.prop]" v-if="item.type === 'timePicker'" :type="item.pickerType || 'date'"></easy4j-time-picker>
+                <easy4j-time-picker
+                  v-model="queryParam[item.prop]"
+                  v-if="item.type === 'timePicker'"
+                  :type="item.pickerType || 'date'"
+                ></easy4j-time-picker>
                 <a-input v-if="!item.type" v-model="queryParam[item.prop]" :placeholder="item.placeholder" />
               </a-form-item>
             </a-col>
@@ -103,7 +111,7 @@ export default {
       immediate: true,
       handler (newVal, oldVal) {
         const obj = {}
-        this.formConfig.map(item => {
+        this.formConfig.map((item) => {
           obj[item.prop] = item.defaultVal || undefined
         })
         this.queryParam = Object.assign({}, obj)
@@ -122,6 +130,7 @@ export default {
     },
     changeSelect (value, prop) {
       this.queryParam[prop] = value.value
+      this.confim()
     },
     changeCity (city, prop) {
       this.queryParam[prop] = city
@@ -140,7 +149,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  /deep/ .ant-calendar-picker{
-    width: 100%;
-  }
+/deep/ .ant-calendar-picker {
+  width: 100%;
+}
 </style>
